@@ -1,0 +1,60 @@
+type: OBS
+title: !ENV 'MADIS Wind Rose for the ${WIND_ROSE_OUTPUT_LABEL} Domain'
+wind_rose_breaks:
+  - 0.0
+  - 1.0
+  - 2.0
+  - 3.0
+  - 5.0
+  - 8.0
+  - 12.0
+wind_rose_angle: 30
+wind_rose_marker_colors:
+  - 'rgb(95,78,160)'
+  - 'rgb(78,176,170)'
+  - 'rgb(192,228,160)'
+  - 'rgb(255,255,194)'
+  - 'rgb(253,193,115)'
+  - 'rgb(236,94,74)'
+  - 'rgb(159,11,68)'
+create_figure: True
+show_legend: True
+angularaxis_tickvals:
+  - 0
+  - 90
+  - 180
+  - 270
+angularaxis_ticktext:
+  - 'N'
+  - 'E'
+  - 'S'
+  - 'W'
+
+#  Uncomment to specify the range of the radial axes to draw
+radialaxis_range: [0, 21]
+
+# Step size in between ticks of the axis
+radialaxis_step: 3
+
+# !!!!!!!! IMPORTANT !!!!!!
+# Uncomment the stat_input setting and specify the full path to the
+# point_stat_mpr.txt file
+stat_input: !ENV '${WIND_ROSE_STAT_INPUT}'
+
+plot_filename: !ENV '${WIND_ROSE_OUTPUT_DIR}/wind_rose_${WIND_ROSE_OUTPUT_LABEL}_obs.png'
+dump_points: True
+
+# Optional, uncomment and set to directory to store the .points1 file
+# that is used by METviewer (created when dump_points_1 is set to True)
+# if dump_points_1 is True and this is uncommented, the points1 file
+# will be saved in the default location (i.e. where the input data file is stored).
+# points_path: '/dir_to_save_points1_file'
+show_in_browser: False
+
+# To save your log output to a file, specify a path and filename and uncomment the line below.  Make sure you have
+# permissions to the directory you specify.  The default, as specified in the default config file is stdout.
+log_filename: !ENV '${WIND_ROSE_LOG_FILENAME}'
+
+# To change the log level, specify a log level: debug, info, warning, error and uncomment the line below.
+# The debug and info log levels will produce more log output.
+#log_level: WARNING
